@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { Book } from "./models/BookModel.js";
 // import bookRoutes from "./routes/bookRoutes.js";
 import router from "./routes/bookRoutes.js";
+import cors from "cors";
 
 const app = express();
 const PORT = 5555;
@@ -15,6 +16,18 @@ const PORT = 5555;
 app.use(express.json());
 
 dotenv.config();
+
+// Middleware for handling CORS policy
+// Option 1: Allow all origins with default of cors(*)
+app.use(cors());
+// Option 2: Allow Custom Origins
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type"],
+//   })
+// );
 
 // Route for Save a new Book
 // app.post("/books", async (req, res) => {
